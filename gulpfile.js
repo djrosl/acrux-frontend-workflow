@@ -6,10 +6,13 @@ var browserSync = require('browser-sync');
 // Load plugins
 var $ = require('gulp-load-plugins')();
 
+var coffee = require('gulp-coffee');
+
 gulp.task('coffee', function() {
   gulp.src('src/scripts/*.coffee')
-    .pipe($.coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest('build'))
+    .pipe(coffee({bare: true}).on('error', $.util.log))
+    .pipe(gulp.dest('build/js'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('styles', function() {
@@ -92,7 +95,7 @@ gulp.task('clean', function(cb) {
 });
 
 
-gulp.task('build', ['styles', 'views', 'images']);
+gulp.task('build', ['styles', 'views', 'images', 'coffee']);
 
 
 gulp.task('default', ['clean'], function() {
