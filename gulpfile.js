@@ -22,8 +22,8 @@ gulp.task('styles', function() {
     'Firefox ESR',
     'Opera 12.1'
   ];
-  return gulp.src('src/**/*.less')
-    .pipe($.less({
+  return gulp.src('src/**/main.styl')
+    .pipe($.stylus({
       paths: ['bower_components']
     })
     .on('error', $.util.log))
@@ -72,7 +72,7 @@ gulp.task('browser-sync', function() {
 
 
 gulp.task('watch', ['build'], function() {
-  gulp.watch('src/**/*.less', ['styles']);
+  gulp.watch('src/**/*.styl', ['styles']);
   gulp.watch('src/images/**/*', ['images']);
   gulp.watch('src/**/*.jade', ['views']);
   gulp.watch('src/scripts/*.coffee', ['coffee']);

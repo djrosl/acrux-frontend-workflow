@@ -1,8 +1,10 @@
 doctype html
 html(lang="en")
-	head
-		title Yo! Gulp Less Jade
-		link(rel='stylesheet', href='/styles/main.css')
-	body
-		block content
-		script(src='js/main.js', type='text/javascript')
+  head
+    title Acrux Studio Frontend Workflow
+    link(rel='stylesheet', href='/styles/main.css')
+  body
+    include header.jade
+    block content
+    include footer.jade
+    script(src='js/main.js', type='text/javascript')
